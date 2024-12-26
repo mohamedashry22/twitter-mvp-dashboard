@@ -3,6 +3,7 @@ import React from "react";
 
 import { BurguerButton } from "./burguer-button";
 import { UserDropdown } from "./user-dropdown";
+import { DarkModeSwitch } from "./darkmodeswitch";
 
 interface Props {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ export const NavbarWrapper = ({ children }: Props) => {
           className="w-fit data-[justify=end]:flex-grow-0"
         >
           <NavbarContent>
+            <DarkModeSwitch />
             <UserDropdown />
           </NavbarContent>
         </NavbarContent>

@@ -42,7 +42,9 @@ export const UserDropdown = () => {
   return (
     <Dropdown>
       <NavbarItem>
+       
         <DropdownTrigger>
+        
           <Avatar
             as="button"
             color="secondary"
@@ -68,9 +70,7 @@ export const UserDropdown = () => {
           onPress={handleLogout}>
           Log Out
         </DropdownItem>
-        <DropdownItem key="switch">
-          <DarkModeSwitch />
-        </DropdownItem>
+
       </DropdownMenu>
     </Dropdown>
   );

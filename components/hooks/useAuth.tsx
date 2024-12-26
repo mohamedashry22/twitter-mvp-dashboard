@@ -53,11 +53,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signup = async (userData: { username: string; email: string; password: string, role:string }) => {
     try {
+      debugger;
       const response = await api.post('/api/auth/signup', userData);
 
       if (response && response.data) {
         localStorage.setItem('token', response.data.token);
         setUser(response.data.user);
+        return true;
       }
       
       return false;
