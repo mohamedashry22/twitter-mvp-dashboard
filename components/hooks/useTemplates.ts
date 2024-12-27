@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '../../config/utils/api';
+import { api } from '@/config/utils/api';
 
 export const useTemplates = () => {
   const queryClient = useQueryClient();

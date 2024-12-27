@@ -147,7 +147,7 @@ export const RenderCell = ({
                       <strong>Content:</strong>
                     </p>
                     <p className="break-words">{(templateToEdit as any).content}</p>
-                    <button>press here to copy the value of {(templateToEdit as any).content}</button>
+                    {/* <button>press here to copy the value of {(templateToEdit as any).content}</button> */}
                     <CopyButton content={(templateToEdit as any).content} />
                   </div>
                 </ModalBody>

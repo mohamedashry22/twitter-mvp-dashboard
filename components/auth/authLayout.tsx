@@ -7,7 +7,7 @@ import { Register } from "./register";
 import Link from "next/link";
 
 
-export const AuthLayoutWrapper = () => {
+export const AuthLayoutWrapper = ({props}: any) => {
   const [isLogin, setIsLogin] = useState(true);
 
   const toggleAuth = () => {

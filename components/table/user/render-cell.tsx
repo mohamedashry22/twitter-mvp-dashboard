@@ -92,20 +92,11 @@ export const RenderCell = ({ user, columnKey, deleteUser }: any) => {
       return (
         <div className="flex items-center gap-4 justify-end">
           <div>
-            
-          </div>
-          <div>
-          </div>
-          <div>
-            <Tooltip
-              content="Delete user"
-              color="danger"
-              onClick={() => handleDelete(user)}
-            >
-              <button>
-                <DeleteIcon size={20} fill="#FF0080" />
-              </button>
-            </Tooltip>
+            <Tooltip content="Delete user" color="danger">
+                      <button onClick={() => handleDelete(user)}>
+                        <DeleteIcon size={20} fill="#FF0080" />
+                      </button>
+                    </Tooltip>
           </div>
         </div>
       );

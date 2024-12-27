@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useCallback } from "react";
 import {
   Button,
@@ -15,7 +14,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 
 interface PostTweetModalProps {
-  closeModal: () => void; 
+  closeModal: () => void;
   onPostTweet: (status: string) => Promise<void>;
 }
 
@@ -26,33 +25,15 @@ const TweetSchema = Yup.object().shape({
 });
 
 export const PostTweetModal = ({ closeModal, onPostTweet }: PostTweetModalProps) => {
-  const initialValues = {
-    status: "",
-  };
-
-  const notify = (message: string, type = "error") => {
-    const toastFn = type === "success" ? toast.success : toast.error;
-    toastFn(message, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
   const handleSave = useCallback(
     async (values: { status: string }) => {
       try {
         await onPostTweet(values.status);
-        notify("Tweet posted successfully!", "success");
+        toast.success("Tweet posted successfully!");
         closeModal();
       } catch (error) {
-        console.error("Error posting tweet:", error);
-        notify("Failed to post tweet!");
+        toast.error("Failed to post tweet!");
+        closeModal();
       }
     },
     [onPostTweet, closeModal]
@@ -66,7 +47,7 @@ export const PostTweetModal = ({ closeModal, onPostTweet }: PostTweetModalProps)
             <ModalHeader className="flex flex-col gap-1">Post a New Tweet</ModalHeader>
             <ModalBody>
               <Formik
-                initialValues={initialValues}
+                initialValues={{ status: "" }}
                 validationSchema={TweetSchema}
                 onSubmit={handleSave}
               >
@@ -77,28 +58,21 @@ export const PostTweetModal = ({ closeModal, onPostTweet }: PostTweetModalProps)
                   handleChange,
                   handleSubmit,
                 }) => (
-                  <form className="flex flex-col gap-4 mb-4" onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <Input
                       variant="bordered"
                       label="Tweet Content"
                       placeholder="What's happening?"
                       value={values.status}
                       isInvalid={!!errors.status && !!touched.status}
-                      errorMessage={errors.status as string}
+                      errorMessage={errors.status}
                       onChange={handleChange("status")}
                     />
                     <ModalFooter>
-                      <Button
-                        color="danger"
-                        variant="flat"
-                        onPress={() => {
-                          closeModal();
-                          onClose();
-                        }}
-                      >
+                      <Button color="danger" variant="flat" onPress={closeModal}>
                         Close
                       </Button>
-                      <Button color="primary" variant="flat" type="submit">
+                      <Button color="primary" type="submit">
                         Post Tweet
                       </Button>
                     </ModalFooter>

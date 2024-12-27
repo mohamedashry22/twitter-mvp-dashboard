@@ -12,6 +12,8 @@ import { useSidebarContext } from "../layout/layout-context";
 import { usePathname } from "next/navigation";
 import { TemplatesIcon } from "../icons/sidebar/templates-icon";
 import NextLink from "next/link";
+import { MappingIcon } from "../icons/sidebar/mapping-icon";
+import { WebhookIcon } from "../icons/sidebar/webhook-icon";
 
 
 export const SidebarWrapper = () => {
@@ -31,15 +33,30 @@ export const SidebarWrapper = () => {
         <div className={Sidebar.Header()}>
           <CompaniesDropdown />
         </div>
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full mt-[50%]">
           <div className={Sidebar.Body()}>
-            <SidebarMenu title="Main Menu">
-              <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Users"
-                icon={<AccountsIcon />}
-                href="accounts"
+
+            <SidebarItem
+                isActive={pathname === "/templates"}
+                title="Templates"
+                icon={<TemplatesIcon />}
+                href="templates"
               />
+
+            <SidebarItem
+                isActive={pathname === "/webhooks"}
+                title="Webhooks"
+                icon={<WebhookIcon />}
+                href="webhooks"
+              />
+
+              <SidebarItem
+                isActive={pathname === "/mapping"}
+                title="Mapping"
+                icon={<MappingIcon />}
+                href="mapping"
+              />
+
               <SidebarItem
                 isActive={pathname === "/tweets"}
                 title="Tweets"
@@ -48,27 +65,18 @@ export const SidebarWrapper = () => {
               />
 
               <SidebarItem
-                isActive={pathname === "/mapping"}
-                title="Mapping"
+                isActive={pathname === "/accounts"}
+                title="Users"
                 icon={<AccountsIcon />}
-                href="mapping"
+                href="accounts"
               />
+              
 
-
-              <SidebarItem
-                isActive={pathname === "/templates"}
-                title="Templates"
-                icon={<TemplatesIcon />}
-                href="templates"
-              />
              
-             <SidebarItem
-                isActive={pathname === "/webhooks"}
-                title="Webhooks"
-                icon={<TemplatesIcon />}
-                href="webhooks"
-              />
-            </SidebarMenu>
+
+              
+             
+       
             
             
 
