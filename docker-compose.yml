@@ -9,7 +9,10 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: npm run start
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
