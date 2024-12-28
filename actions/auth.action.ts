@@ -8,4 +8,6 @@ export const createAuthCookie = async () => {
 
 export const deleteAuthCookie = async () => {
   cookies().delete("userAuth");
+  cookies().delete("accessToken");
+  cookies().delete("refreshToken");
 };

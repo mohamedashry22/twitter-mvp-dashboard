@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Login } from "./login";
 import { Register } from "./register";
 import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 
 
 export const AuthLayoutWrapper = ({props}: any) => {
@@ -16,6 +17,7 @@ export const AuthLayoutWrapper = ({props}: any) => {
 
   return (
     <div className="flex h-screen">
+      <ToastContainer />
       {/* Left Section with Gradient */}
       <div className="flex-1 flex-col flex items-center justify-center p-6 relative">
         <div className="absolute inset-0 z-0 md:hidden">

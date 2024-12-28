@@ -234,7 +234,7 @@ export const Register = ({children}: any) => {
         </div> */}
       </div>
 
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div>
   );
 };

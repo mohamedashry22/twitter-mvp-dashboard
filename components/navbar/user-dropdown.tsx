@@ -15,7 +15,7 @@ import { useAuth } from "../hooks/useAuth";
 
 export const UserDropdown = () => {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [localUser, setLocalUser] = useState<any>(null);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export const UserDropdown = () => {
   }, []);
 
   const handleLogout = useCallback(async () => {
+    await logout();
     await deleteAuthCookie();
     router.replace("/login");
   }, [router]);

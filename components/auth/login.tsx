@@ -52,7 +52,7 @@ export const Login = ({ children }: any) => {
 
   return (
     <div className="flex min-h-screen items-center justify-center ">
-      <ToastContainer />
+      
       <div className="bg-white shadow-lg rounded-xl p-12 w-[100%] max-w-screen-xl">
         <div className="text-center text-4xl font-bold mb-8 text-black">Log in or sign up</div>
         <Formik
