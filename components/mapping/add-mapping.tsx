@@ -306,7 +306,7 @@ export const AddMapping = ({ mappingToUpdate, closeModal }: any) => {
 
                     <Textarea
                       variant="bordered"
-                      label="Alert with Tokens"
+                      label="Alert with Tokens: must include {{nameId}} and either {{price}} or {{close}}."
                       value={values.alertToken}
                       isInvalid={!!errors.alertToken && !!touched.alertToken}
                       errorMessage={errors.alertToken as string}
@@ -319,6 +319,7 @@ export const AddMapping = ({ mappingToUpdate, closeModal }: any) => {
                       placeholder="Enter alert text with tokens..."
                       rows={4}
                     />
+                    <span className="text-xs">Note: Alert with Token should have {"{{nameId}}"}</span>
 
                     <Textarea
                       variant="bordered"
