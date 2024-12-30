@@ -40,11 +40,11 @@ export const PostTweetModal = ({ closeModal, onPostTweet }: PostTweetModalProps)
   );
 
   return (
-    <Modal isOpen={true} onOpenChange={closeModal} placement="top-center">
+    <Modal isDismissable={false} isOpen={true} onOpenChange={closeModal} placement="top-center">
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">Post a New Tweet</ModalHeader>
+            <ModalHeader className="flex flex-col gap-1">Post a New Tweet (Testing only)</ModalHeader>
             <ModalBody>
               <Formik
                 initialValues={{ status: "" }}

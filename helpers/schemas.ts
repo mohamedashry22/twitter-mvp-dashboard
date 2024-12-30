@@ -1,10 +1,13 @@
 import { object, ref, string } from "yup";
 
+
 export const LoginSchema = object().shape({
-  email: string()
-    .email("This field must be an email")
-    .required("Email is required"),
-  password: string().required("Password is required"),
+  emailOrUsername: string()
+    .required('Email or username is required')
+    .min(3, 'Email or username must be at least 3 characters'),
+  password: string()
+    .required('Password is required')
+    .min(4, 'Password must be at least 4 characters'),
 });
 
 export const RegisterSchema = object().shape({

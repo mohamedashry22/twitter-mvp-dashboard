@@ -85,7 +85,8 @@ export const AddConfiguration = ({ configurationToUpdate, closeModal }: any) => 
         </Button>
       )}
 
-      <Modal
+      <Modal 
+      isDismissable={false}
         isOpen={isEditing ? true : isOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen && closeModal) {

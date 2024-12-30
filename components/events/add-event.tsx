@@ -19,7 +19,7 @@ import { RegisterSchema } from "@/helpers/schemas";
 import { toast, ToastContainer } from "react-toastify";
 import { useUsers } from "../hooks/useUsers";
 
-export const AddUser = () => {
+export const AddEvent = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { isError, addUser } = useUsers();
   

@@ -119,16 +119,30 @@ export const RenderCell = ({
 
           {/* View Modal */}
           {isViewing && mappingToEdit && (
-            <Modal isOpen={isViewing} onOpenChange={closeModal}>
+            <Modal isDismissable={false} isOpen={isViewing} onOpenChange={closeModal}>
               <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                   View Mapping
                 </ModalHeader>
                 <ModalBody>
+                  
                   <p><strong>Webhook:</strong> {webhook?.name}</p>
                   <p><strong>Template:</strong> {template?.name}</p>
-                  <p className="break-words"> <pre><strong>Mapping JSON:</strong> {(mappingToEdit as any).mappingJson}</pre></p>
-                 
+                  <p><strong>Alert:</strong> {(mappingToEdit as any)?.alert}</p>
+                  <p><strong>Alert With Tokens:</strong> {(mappingToEdit as any)?.alertToken}</p>
+                  <strong>Mapping JSON:</strong>
+                  <pre className="whitespace-pre-wrap break-words p-1 rounded-md">
+
+  {(() => {
+    try {
+      const formattedJson = 
+        JSON.parse((mappingToEdit as any).mappingJson)
+      return formattedJson;
+    } catch (error) {
+      return "Invalid JSON format!";
+    }
+  })()}
+</pre>                 
                 </ModalBody>
                 <Button
                   color="primary"

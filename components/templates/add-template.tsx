@@ -24,6 +24,7 @@ export const AddTemplate = ({ templateToUpdate, closeModal }: any) => {
   const initialValues = {
     name: templateToUpdate?.name || "",
     content: templateToUpdate?.content || "",
+    contentClose: templateToUpdate?.contentClose || "",
   };
 
   const notify = (message: any, type = "error") => {
@@ -51,6 +52,7 @@ export const AddTemplate = ({ templateToUpdate, closeModal }: any) => {
             id: templateToUpdate.id,
             name: values.name,
             content: values.content,
+            contentClose: values.contentClose,
             userId: parsedUser?.id,
           });
           notify("Template updated successfully!", "success");
@@ -58,6 +60,7 @@ export const AddTemplate = ({ templateToUpdate, closeModal }: any) => {
           await addTemplate.mutateAsync({
             name: values.name,
             content: values.content,
+            contentClose: values.contentClose,
             userId: parsedUser?.id,
           });
           notify("Template added successfully!", "success");
@@ -88,6 +91,7 @@ export const AddTemplate = ({ templateToUpdate, closeModal }: any) => {
       )}
 
       <Modal
+      isDismissable={false}
         isOpen={isEditing ? true : isOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen && closeModal) {
@@ -128,11 +132,22 @@ export const AddTemplate = ({ templateToUpdate, closeModal }: any) => {
                       />
                       <Textarea
                         variant="bordered"
-                        label="Content"
+                        label="Opening Template"
                         value={values.content}
                         isInvalid={!!errors.content && !!touched.content}
                         errorMessage={errors.content as string}
                         onChange={handleChange("content")}
+                        rows={8}
+                        size="lg"
+                      />
+
+                      <Textarea
+                        variant="bordered"
+                        label="Closing Template"
+                        value={values.contentClose}
+                        isInvalid={!!errors.contentClose && !!touched.contentClose}
+                        errorMessage={errors.contentClose as string}
+                        onChange={handleChange("contentClose")}
                         rows={8}
                         size="lg"
                       />

@@ -144,12 +144,13 @@ export const RenderCell = ({
                       <strong>Name:</strong> {(templateToEdit as any).name}
                     </p>
                     <p>
-                      <strong>Content:</strong>
+                      <strong>Opening Content:</strong>
                     </p>
                     <p className="break-words">{(templateToEdit as any).content}</p>
                     {/* <button>press here to copy the value of {(templateToEdit as any).content}</button> */}
                     <CopyButton content={(templateToEdit as any).content} />
 
+                  
                     <p>
                       <strong>Closing Content:</strong>
                     </p>

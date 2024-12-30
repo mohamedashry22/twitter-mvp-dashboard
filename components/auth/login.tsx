@@ -2,7 +2,6 @@
 
 import { createAuthCookie } from "@/actions/auth.action";
 import { LoginSchema } from "@/helpers/schemas";
-import { LoginFormType } from "@/helpers/types";
 import { Button, Input } from "@nextui-org/react";
 import { Formik } from "formik";
 import Link from "next/link";
@@ -10,6 +9,11 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { toast, ToastContainer } from "react-toastify";
+
+interface LoginFormType {
+  emailOrUsername: string;
+  password: string;
+}
 
 export const Login = ({ children }: any) => {
   const router = useRouter();
@@ -30,14 +34,15 @@ export const Login = ({ children }: any) => {
     });
 
   const initialValues: LoginFormType = {
-    email: "m@m.com",
-    password: "123",
+    emailOrUsername: "admin@admin.com",
+    password: "admin",
   };
 
   const handleLogin = useCallback(
     async (values: LoginFormType) => {
       const isSuccess = await login({
-        email: values.email,
+        email: values.emailOrUsername, // If it's an email
+        username: values.emailOrUsername, // If it's a username
         password: values.password,
       });
       if (isSuccess) {
@@ -52,7 +57,6 @@ export const Login = ({ children }: any) => {
 
   return (
     <div className="flex min-h-screen items-center justify-center ">
-      
       <div className="bg-white shadow-lg rounded-xl p-12 w-[100%] max-w-screen-xl">
         <div className="text-center text-4xl font-bold mb-8 text-black">Log in or sign up</div>
         <Formik
@@ -65,12 +69,12 @@ export const Login = ({ children }: any) => {
               <div className="flex flex-col gap-6 mb-8">
                 <Input
                   variant="bordered"
-                  label="Email"
-                  type="email"
-                  value={values.email}
-                  isInvalid={!!errors.email && !!touched.email}
-                  errorMessage={errors.email}
-                  onChange={handleChange("email")}
+                  label="Email or Username"
+                  type="text"
+                  value={values.emailOrUsername}
+                  isInvalid={!!errors.emailOrUsername && !!touched.emailOrUsername}
+                  errorMessage={errors.emailOrUsername}
+                  onChange={handleChange("emailOrUsername")}
                   className="w-full text-black"
                 />
                 <Input
@@ -98,18 +102,9 @@ export const Login = ({ children }: any) => {
         </Formik>
 
         <div className="font-light text-gray-500 mt-6 text-center">
-        {children}
+          {children}
         </div>
-        {/* <div className="font-light text-gray-500 mt-6 text-center text-sm">
-          Don&apos;t have an account?{" "}
-          <Link href="/register" className="font-medium text-red-500">
-            Register here
-          </Link>
-        </div> */}
-        
       </div>
-
-      
     </div>
   );
 };

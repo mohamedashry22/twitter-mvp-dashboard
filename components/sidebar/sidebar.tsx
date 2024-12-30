@@ -71,15 +71,6 @@ export const SidebarWrapper = () => {
                 href="accounts"
               />
               
-
-             
-
-              
-             
-       
-            
-            
-
             {/* <SidebarItem
                 isActive={pathname === "/mappings"}
                 title="Mapping"

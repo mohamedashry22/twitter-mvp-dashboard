@@ -125,7 +125,7 @@ export const RenderCell = ({
 
           {/* View Modal */}
           {isViewing && configurationToEdit && (
-            <Modal isOpen={isViewing} onOpenChange={closeModal} placement="top-center">
+            <Modal isDismissable={false} isOpen={isViewing} onOpenChange={closeModal} placement="top-center">
               <ModalContent>
                 <ModalHeader className="flex flex-col gap-1">
                   View Configuration

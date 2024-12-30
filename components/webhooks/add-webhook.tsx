@@ -84,6 +84,7 @@ export const AddWebhook = ({ webhookToUpdate, closeModal }: any) => {
       )}
 
       <Modal
+      isDismissable={false}
         isOpen={isEditing ? true : isOpen}
         onOpenChange={(isOpen) => {
           if (!isOpen && closeModal) {
