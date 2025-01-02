@@ -74,7 +74,7 @@ export const EyeFilledIcon = (props: any) => {
 
 export const Register = ({children}: any) => {
   const router = useRouter();
-  const { signup } = useAuth();
+  const { signup, login } = useAuth();
   const initialValues: RegisterFormType = {
     name: "",
     email: "",
@@ -113,8 +113,17 @@ export const Register = ({children}: any) => {
         });
 
         if (isSuccess) {
-          await createAuthCookie();
-          router.replace("/");
+          const isSuccess = await login({
+            email: values.email,
+            username: values.name, 
+            password: values.password,
+          });
+          if (isSuccess) {
+            await createAuthCookie();
+            router.replace("/");
+          } else {
+            notify();
+          }
         } else {
           notify();
           console.error("Registration failed");
