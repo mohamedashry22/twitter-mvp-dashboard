@@ -133,7 +133,12 @@ export const RenderCell = ({
                     <p>
                       <strong>Webhook Url:</strong>
                     </p>
-                    <p className="break-words">{(webhookToEdit as any).endpointUrl}</p>
+
+                    <p className="break-words">
+  {typeof window !== 'undefined'
+    ? `${window.location.origin}/api/${(webhookToEdit as any).endpointUrl}`
+    : ''}
+</p>
                     <p>
                       <strong>Description:</strong>
                     </p>
