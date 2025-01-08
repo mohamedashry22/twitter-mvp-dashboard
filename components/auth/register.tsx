@@ -1,6 +1,6 @@
 "use client";
 
-import { createAuthCookie } from "@/actions/auth.action";
+// import { createAuthCookie } from "@/actions/auth.action";
 import { RegisterSchema } from "@/helpers/schemas";
 import { RegisterFormType } from "@/helpers/types";
 import { Button, Input } from "@nextui-org/react";
@@ -119,7 +119,7 @@ export const Register = ({children}: any) => {
             password: values.password,
           });
           if (isSuccess) {
-            await createAuthCookie();
+            // await createAuthCookie();
             router.replace("/");
           } else {
             notify();

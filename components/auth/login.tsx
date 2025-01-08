@@ -1,6 +1,6 @@
 "use client";
 
-import { createAuthCookie } from "@/actions/auth.action";
+// import { createAuthCookie } from "@/actions/auth.action";
 import { LoginSchema } from "@/helpers/schemas";
 import { Button, Input } from "@nextui-org/react";
 import { Formik } from "formik";
@@ -46,7 +46,7 @@ export const Login = ({ children }: any) => {
         password: values.password,
       });
       if (isSuccess) {
-        await createAuthCookie();
+        // await createAuthCookie();
         router.replace("/");
       } else {
         notify();
